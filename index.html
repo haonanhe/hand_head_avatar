@@ -37,20 +37,6 @@
   <meta property="article:tag" content="3D avatar">
   <meta property="article:tag" content="hand-head interaction">
 
-  Twitter
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
   <!-- Academic/Research Specific -->
   <meta name="citation_title" content="PAPER_TITLE">
   <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
@@ -177,6 +163,9 @@
     ]
   }
   </script>
+
+  <!-- QR Code Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -365,6 +354,14 @@
 </section>
 <!-- End teaser video -->
 
+<!-- QR Code Section -->
+<section class="section has-text-centered">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">📱 Scan to View on Mobile</h2>
+    <div id="qrcode-container" style="margin: 1.5rem auto; display: inline-block;"></div>
+    <p class="is-size-6">Scan this QR code to open the paper page on your phone.</p>
+  </div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
@@ -405,6 +402,23 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // 确保 DOM 加载完成
+  document.addEventListener('DOMContentLoaded', function () {
+    const pageUrl = 'https://haonanhe.github.io/hand_head_avatar/';
+    const container = document.getElementById('qrcode-container');
+    
+    if (container) {
+      QRCode.toCanvas(container, pageUrl, {
+        width: 160,
+        margin: 2
+      }, function (error) {
+        if (error) console.error('QR Code generation failed:', error);
+      });
+    }
+  });
+</script>
 
 <!-- Statcounter tracking code -->
   
